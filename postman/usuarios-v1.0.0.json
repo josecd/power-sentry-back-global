@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "456475c9-2877-4b20-8c43-781bba43b4d4",
+		"name": "revisionv2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30749836"
+	},
+	"item": [
+		{
+			"name": "init",
+			"item": [
+				{
+					"name": "crear-permisos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/permisos/inicio",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"permisos",
+								"inicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear-roles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/roles/init",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"roles",
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear-usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usuarios/init",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"init"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "register-usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jose\",\n    \"email\":\"josecordero.dz2@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuarios/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jose\",\n    \"email\":\"josecordero.dz5@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\",\n    \"roles\":[1,2]\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuarios/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista-usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usuarios/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permisos-usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usuarios/6/permisos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"6",
+								"permisos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar-usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jose\",\n    //\"email\":\"josecordero.dz@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\",\n    \"roles\":[1,2,4]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuarios/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"josecordero.dz5@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-user Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"josecordero.dz4@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvc2Vjb3JkZXJvLmR6NUBnbWFpbC5jb20iLCJzdWIiOjYsImlhdCI6MTc0MTgzOTE3MSwiZXhwIjoxNzQyNDQzOTcxfQ.FAQONf9FSeDlu0Dh2A9azWPgP2Z_eF-5VZIPWQKPr8c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"josecordero.dz5@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvc2Vjb3JkZXJvLmR6NEBnbWFpbC5jb20iLCJzdWIiOjUsImlhdCI6MTc0MTg0MDQ1NiwiZXhwIjoxNzQyNDQ1MjU2fQ.kx1nPJH0qt0v2veh3griJoPI3h80oWPDXkeoGlqaPLk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"josecordero.dz5@gmail.com\",\n    \"contraseña\":\"1A4l9e9x\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/logout-all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"logout-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvc2Vjb3JkZXJvLmR6NEBnbWFpbC5jb20iLCJzdWIiOjUsImlhdCI6MTc0MTgzOTkyMywiZXhwIjoxNzQxODQwODIzfQ.OOR_5WawY7tLUYxNLxmm6Asgjkr6qEajAbow5Y0taPo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvc2Vjb3JkZXJvLmR6NEBnbWFpbC5jb20iLCJzdWIiOjUsImlhdCI6MTc0MTgzOTkyMywiZXhwIjoxNzQyNDQ0NzIzfQ.H-L3e2Z2cbzKzcOPrWLAgasExQp9uKzfC0bk_oA2yTA\",\n    \"userId\":\"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/refresh",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "permisos",
+			"item": [
+				{
+					"name": "crear-permiso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"editar test\",\n    \"identificador\":\"editar modulo test2\",\n    \"descripcion\":\"Esto edita el modulo test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/permisos/crear",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"permisos",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar-permiso",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    //\"nombre\":\"editar test2\",\n    //\"identificador\":\"editar test\",\n    \"descripcion\":\"Estp crea el modulo testd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/permisos/editar/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"permisos",
+								"editar",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "crear-rol",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"Rol test\",\n    \"descripcion\":\"rol test postman\",\n    \"permisosIds\":[1,2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/roles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar-rol",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    //\"nombre\":\"Rol test2\",\n    //\"descripcion\":\"rol test postman2\",\n    \"permisosIds\":[1,2,5]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/roles/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"roles",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:300",
+			"type": "string"
+		}
+	]
+}
