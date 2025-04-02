@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { configurationEnv } from './configuration';
 import { AuthModule } from './auth/auth.module';
+import { ModulosDinamicosModule } from './modulos/modulos-dinamicos/modulos-dinamicos.module';
 
 
 @Module({
@@ -29,7 +30,7 @@ import { AuthModule } from './auth/auth.module';
     UsuariosModule,
     RolesModule, 
     PermisosModule, 
-    AuthModule
+    AuthModule, ModulosDinamicosModule
   ],
   controllers: [AppController],
   providers: [AppService],
