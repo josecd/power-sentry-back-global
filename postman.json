@@ -1,0 +1,298 @@
+{
+    "info": {
+      "_postman_id": "a1b2c3d4-e5f6-7890",
+      "name": "Shelly Devices & Locations API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": "Complete API collection for managing Shelly devices and locations"
+    },
+    "item": [
+      {
+        "name": "Locations",
+        "item": [
+          {
+            "name": "Create Location",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Casa Principal\",\n  \"apiUrl\": \"https://api.weather.com/v3/casa-principal\",\n  \"latitude\": 40.7128,\n  \"longitude\": -74.0060,\n  \"timezone\": \"America/New_York\",\n  \"description\": \"Ubicación principal con dispositivos Shelly\",\n  \"apiConfig\": {\n    \"apiKey\": \"tu-clave-api\",\n    \"refreshInterval\": 3600,\n    \"weatherParams\": [\"temperature\", \"humidity\", \"rain\"]\n  }\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{base_url}}/locations",
+                "host": ["{{base_url}}"],
+                "path": ["locations"]
+              },
+              "response": [
+                {
+                  "name": "Success Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}"
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/locations",
+                      "host": ["{{base_url}}"],
+                      "path": ["locations"]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"id\": 1,\n  \"name\": \"Casa Principal\",\n  \"apiUrl\": \"https://api.weather.com/v3/casa-principal\",\n  \"createdAt\": \"2023-11-20T10:00:00.000Z\",\n  \"updatedAt\": \"2023-11-20T10:00:00.000Z\"\n}"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Get All Locations",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/locations",
+                "host": ["{{base_url}}"],
+                "path": ["locations"]
+              },
+              "response": [
+                {
+                  "name": "Success Response",
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Casa Principal\",\n    \"apiUrl\": \"https://api.weather.com/v3/casa-principal\",\n    \"devices\": [\n      {\n        \"id\": 1,\n        \"name\": \"Shelly Plug Sala\"\n      }\n    ]\n  }\n]"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Get Location by ID",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/locations/1",
+                "host": ["{{base_url}}"],
+                "path": ["locations", "1"]
+              },
+              "response": [
+                {
+                  "name": "Success Response",
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"id\": 1,\n  \"name\": \"Casa Principal\",\n  \"apiUrl\": \"https://api.weather.com/v3/casa-principal\",\n  \"devices\": [\n    {\n      \"id\": 1,\n      \"name\": \"Shelly Plug Sala\",\n      \"ipAddress\": \"192.168.1.100\"\n    }\n  ]\n}"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Update Location",
+            "request": {
+              "method": "PUT",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Casa Principal - Actualizada\",\n  \"description\": \"Nueva descripción con más detalles\",\n  \"apiConfig\": {\n    \"refreshInterval\": 1800\n  }\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{base_url}}/locations/1",
+                "host": ["{{base_url}}"],
+                "path": ["locations", "1"]
+              }
+            }
+          },
+          {
+            "name": "Delete Location",
+            "request": {
+              "method": "DELETE",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/locations/1",
+                "host": ["{{base_url}}"],
+                "path": ["locations", "1"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Shelly Devices",
+        "item": [
+          {
+            "name": "Create Shelly Device",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Shelly Plug Cocina\",\n  \"ipAddress\": \"192.168.1.101\",\n  \"locationId\": 1,\n  \"weatherControlEnabled\": true,\n  \"turnOnWhenTempAbove\": 25,\n  \"sunriseSunsetControl\": false\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{base_url}}/shelly",
+                "host": ["{{base_url}}"],
+                "path": ["shelly"]
+              }
+            }
+          },
+          {
+            "name": "Get All Devices",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/shelly",
+                "host": ["{{base_url}}"],
+                "path": ["shelly"]
+              }
+            }
+          },
+          {
+            "name": "Get Devices by Location",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/shelly?locationId=1",
+                "host": ["{{base_url}}"],
+                "path": ["shelly"],
+                "query": [
+                  {
+                    "key": "locationId",
+                    "value": "1"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "Update Device Status",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"isOn\": true,\n  \"weatherControlEnabled\": false\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{base_url}}/shelly/1/status",
+                "host": ["{{base_url}}"],
+                "path": ["shelly", "1", "status"]
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "base_url",
+        "value": "http://localhost:3000",
+        "description": "Base API URL"
+      },
+      {
+        "key": "auth_token",
+        "value": "",
+        "description": "JWT Token for authentication"
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": [
+        {
+          "key": "token",
+          "value": "{{auth_token}}",
+          "type": "string"
+        }
+      ]
+    }
+  }

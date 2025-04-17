@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { configurationEnv } from './configuration';
 import { AuthModule } from './auth/auth.module';
+import { LocationsModule } from './locations/locations.module';
+import { ShellyModule } from './modulos/shelly/shelly.module';
 
 
 @Module({
@@ -29,7 +31,9 @@ import { AuthModule } from './auth/auth.module';
     UsuariosModule,
     RolesModule, 
     PermisosModule, 
-    AuthModule
+    AuthModule,
+    LocationsModule,
+    ShellyModule
   ],
   controllers: [AppController],
   providers: [AppService],
