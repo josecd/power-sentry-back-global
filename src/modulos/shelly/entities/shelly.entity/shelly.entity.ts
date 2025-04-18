@@ -1,4 +1,4 @@
-import { Location } from 'src/locations/entities/location.entity';
+import { Location } from 'src/modulos/locations/entities/location.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 
 @Entity()

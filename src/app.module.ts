@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { configurationEnv } from './configuration';
 import { AuthModule } from './auth/auth.module';
-import { LocationsModule } from './locations/locations.module';
+import { LocationsModule } from './modulos/locations/locations.module';
 import { ShellyModule } from './modulos/shelly/shelly.module';
 
 
