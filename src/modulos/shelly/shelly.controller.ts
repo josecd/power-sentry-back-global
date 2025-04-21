@@ -13,7 +13,7 @@ export class ShellyController {
     return this.shellyService.create(createShellyDto);
   }
 
-  @Get()
+  @Get('all')
   findAll(): Promise<ShellyDevice[]> {
     return this.shellyService.findAll();
   }
