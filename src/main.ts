@@ -8,15 +8,21 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors({
     origin: [
-      'http://localhost:8100', // Desarrollo Ionic
-      'http://localhost:4200', // Angular dev
-      'https://tudominio.com',  // Producción
-      'capacitor://localhost', // Para apps móviles
-      'http://localhost'        // Localhost alternativo
+      'http://localhost:8100',      // Ionic dev server
+      'capacitor://localhost',      // Para Capacitor
+      'http://localhost',           // Localhost alternativo
+      'https://tudominio.com'       // Producción
     ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type, Accept, Authorization',
+    methods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept'
+    ],
+    exposedHeaders: ['Authorization'],
     credentials: true,
+    maxAge: 86400, // 24 horas
     preflightContinue: false,
     optionsSuccessStatus: 204
   });
