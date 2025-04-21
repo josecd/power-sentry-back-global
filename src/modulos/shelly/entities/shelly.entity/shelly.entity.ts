@@ -1,5 +1,6 @@
 import { Location } from 'src/modulos/locations/entities/location.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
+import { Usuario } from 'src/modulos/usuarios/entities/usuario.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany } from 'typeorm';
 
 @Entity()
 export class ShellyDevice {
@@ -68,6 +69,10 @@ export class ShellyDevice {
 
   @Column({ nullable: true })
   sunsetTime: string;   // Formato "HH:MM"
+
+  // Relación inversa
+  @ManyToMany(() => Usuario, usuario => usuario.devicesAccesibles)
+  usuariosConAcceso: Usuario[];
 
   @ManyToOne(() => Location, (location) => location.devices, { nullable: true })
   location: Location;

@@ -1,5 +1,6 @@
 import { ShellyDevice } from 'src/modulos/shelly/entities/shelly.entity/shelly.entity';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Usuario } from 'src/modulos/usuarios/entities/usuario.entity';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany } from 'typeorm';
 
 @Entity()
 export class Location {
@@ -32,6 +33,10 @@ export class Location {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  // Relación inversa
+  @ManyToMany(() => Usuario, usuario => usuario.locationsAccesibles)
+  usuariosConAcceso: Usuario[];
 
   @OneToMany(() => ShellyDevice, (device) => device.location)
   devices: ShellyDevice[];
