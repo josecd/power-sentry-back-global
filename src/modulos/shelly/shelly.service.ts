@@ -19,7 +19,7 @@ export class ShellyService {
     private httpService: HttpService,
   ) {}
 
-  async toogleApi(id, action){
+  async toggleApi(id, action){
 
     try {
       const device = await this.shellyRepository.findOne({ 
@@ -29,14 +29,11 @@ export class ShellyService {
       if (!device) {
         throw new Error('Dispositivo no encontrado');
       }
-      const urlApi = `${device.location?.apiUrl}/shelly/${device.idDeviceApi}/toogle/${action}`
+      const urlApi = `${device.location?.apiUrl}/shelly/${device.idDeviceApi}/toggle/${action}`
       console.log("Url api", urlApi);
       const response = await firstValueFrom(
         this.httpService.post<ShellyStatus>(urlApi),
       );
-  
-      console.log("Response", response);
-      
       return response.data
     } catch (error) {
       return { isok: false, error: error.message };

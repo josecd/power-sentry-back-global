@@ -8,14 +8,14 @@ import { ShellyDevice } from './entities/shelly.entity/shelly.entity';
 export class ShellyController {
   constructor(private readonly shellyService: ShellyService) { }
   // Cambios a otra api 
-  @Get(":id/toogle/:action")
-  async toogleApi(
+  @Get(":id/toggle/:action")
+  async toggleApi(
     @Param('id') id: string,
     @Param('action') action: string,
   ): Promise<any> {
-    console.log("toogleApi");
+    console.log("togleApi");
     
-    return this.shellyService.toogleApi(id, action);
+    return this.shellyService.toggleApi(id, action);
   }
 
   //-------------
