@@ -19,6 +19,33 @@ export class ShellyService {
     private httpService: HttpService,
   ) {}
 
+  async toogleApi(id, action){
+
+    try {
+      const device = await this.shellyRepository.findOne({ 
+        where: { id },
+        relations: ['location'] 
+      });
+      if (!device) {
+        throw new Error('Dispositivo no encontrado');
+      }
+      const urlApi = `${device.location?.apiUrl}/${device.idDeviceApi}/toogle/${action}`
+      console.log("Url api", urlApi);
+      const response = await firstValueFrom(
+        this.httpService.get<ShellyStatus>(urlApi),
+      );
+  
+      console.log("Response", response);
+      
+      return response.data
+    } catch (error) {
+      return { isok: false, error: error.message };
+      
+    }
+
+  
+  }
+
   async create(createShellyDto: CreateShellyDto): Promise<ShellyDevice> {
     const device = this.shellyRepository.create(createShellyDto);
     return this.shellyRepository.save(device);
@@ -79,7 +106,7 @@ export class ShellyService {
   }
 
   // Programar chequeos periódicos (ejemplo cada hora)
-  @Cron('0 * * * *') // Cada hora en el minuto 0
+  /* @Cron('0 * * * *') // Cada hora en el minuto 0 */
   async scheduledWeatherCheck() {
     console.log("Activate scheduledWeatherCheck ");
     

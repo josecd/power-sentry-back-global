@@ -7,7 +7,18 @@ import { ShellyDevice } from './entities/shelly.entity/shelly.entity';
 @Controller('shelly')
 export class ShellyController {
   constructor(private readonly shellyService: ShellyService) { }
+  // Cambios a otra api 
+  @Get(":id/toogle/:action")
+  async toogleApi(
+    @Param('id') id: string,
+    @Param('action') action: string,
+  ): Promise<any> {
+    console.log("toogleApi");
+    
+    return this.shellyService.toogleApi(id, action);
+  }
 
+  //-------------
   @Post()
   create(@Body() createShellyDto: CreateShellyDto): Promise<ShellyDevice> {
     return this.shellyService.create(createShellyDto);
