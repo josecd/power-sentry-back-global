@@ -32,7 +32,7 @@ export class ShellyService {
       const urlApi = `${device.location?.apiUrl}/shelly/${device.idDeviceApi}/toogle/${action}`
       console.log("Url api", urlApi);
       const response = await firstValueFrom(
-        this.httpService.get<ShellyStatus>(urlApi),
+        this.httpService.post<ShellyStatus>(urlApi),
       );
   
       console.log("Response", response);
