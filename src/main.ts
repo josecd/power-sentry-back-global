@@ -27,8 +27,8 @@ async function bootstrap() {
     optionsSuccessStatus: 204
   });
 
-  console.log("PORT", process.env.PORT ?? 3002);
+  console.log("PORT", process.env.PORT ?? 3001);
   
-  await app.listen(process.env.PORT ?? 3002);
+  await app.listen(process.env.PORT ?? 3001);
 }
 bootstrap();
