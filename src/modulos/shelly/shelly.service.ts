@@ -29,7 +29,7 @@ export class ShellyService {
       if (!device) {
         throw new Error('Dispositivo no encontrado');
       }
-      const urlApi = `${device.location?.apiUrl}/${device.idDeviceApi}/toogle/${action}`
+      const urlApi = `${device.location?.apiUrl}/shelly/${device.idDeviceApi}/toogle/${action}`
       console.log("Url api", urlApi);
       const response = await firstValueFrom(
         this.httpService.get<ShellyStatus>(urlApi),
